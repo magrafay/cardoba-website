@@ -3,6 +3,7 @@ import ContactForm from "@/components/ContactForm";
 import Icon, { type AnyIcon } from "@/components/Icon";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import { photos, unsplash } from "@/data/services";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = { title: "Contact Us" };
@@ -26,6 +27,13 @@ export default function ContactPage() {
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-24 sm:px-6 lg:grid-cols-[1fr_1.5fr]">
         <div className="grid content-start gap-4">
+          <Reveal className="relative h-52 overflow-hidden rounded-3xl bg-brand-50">
+            <img src={unsplash(photos.lobby, 900)} alt="Modern office reception" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+            <p className="absolute bottom-5 left-5 right-5 text-lg font-semibold text-white">
+              We&apos;d love to hear about your plans.
+            </p>
+          </Reveal>
           {details.map((d, i) => (
             <Reveal key={d.label} delay={i * 70}>
               <div className="glass flex items-center gap-4 rounded-3xl p-5">

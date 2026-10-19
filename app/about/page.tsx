@@ -3,6 +3,7 @@ import CTA from "@/components/CTA";
 import Icon, { type AnyIcon } from "@/components/Icon";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import { photos, unsplash } from "@/data/services";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = { title: "About Us" };
@@ -42,20 +43,44 @@ export default function AboutPage() {
         text={`${site.name} is a professional services company supporting businesses, investors, and individuals with reliable, efficient, and customized solutions.`}
       />
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-20 sm:px-6 lg:grid-cols-[1.2fr_1fr]">
-        <Reveal className="rounded-3xl border border-slate-200/70 bg-white p-8 md:p-10">
-          <p className="text-sm font-semibold text-brand-500">Our story</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-ink">Expertise under one roof</h2>
-          <p className="mt-4 leading-relaxed">
-            We bring together expertise across consultancy, real estate, technology, facilities and events under one
-            roof. Instead of juggling multiple providers, our clients work with a single trusted partner who
-            understands their needs and delivers end to end.
-          </p>
-          <p className="mt-4 leading-relaxed">
-            Our services range from e-commerce and IT consultancy to risk management, document preparation and event
-            organizing. Whatever the task, our focus stays the same: simplify business operations, support growth,
-            manage risks, and create value.
-          </p>
+      <section className="mx-auto max-w-6xl px-4 pb-6 sm:px-6">
+        <Reveal className="relative h-64 overflow-hidden rounded-[2rem] bg-brand-50 md:h-[420px]">
+          <img src={unsplash(photos.city, 1600)} alt="Modern city office towers" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+          <div className="glass absolute bottom-5 left-5 right-5 grid grid-cols-3 divide-x divide-slate-200 rounded-2xl py-4 md:left-auto md:right-8 md:bottom-8 md:w-[420px]">
+            {[
+              ["10+", "Services"],
+              ["3", "Client groups"],
+              ["1", "Partner"],
+            ].map(([n, l]) => (
+              <div key={l} className="text-center">
+                <p className="text-2xl font-bold text-ink">{n}</p>
+                <p className="text-[11px] font-medium uppercase tracking-wider text-slate-500">{l}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto grid max-w-6xl gap-6 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_1fr]">
+        <Reveal className="overflow-hidden rounded-3xl border border-slate-200/70 bg-white">
+          <div className="h-56 overflow-hidden bg-brand-50">
+            <img src={unsplash(photos.meeting, 1200)} alt="Team meeting around a whiteboard" loading="lazy" className="h-full w-full object-cover" />
+          </div>
+          <div className="p-8 md:p-10">
+            <p className="text-sm font-semibold text-brand-500">Our story</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-[-0.02em] text-ink">Expertise under one roof</h2>
+            <p className="mt-4 leading-relaxed">
+              We bring together expertise across consultancy, real estate, technology, facilities and events under one
+              roof. Instead of juggling multiple providers, our clients work with a single trusted partner who
+              understands their needs and delivers end to end.
+            </p>
+            <p className="mt-4 leading-relaxed">
+              Our services range from e-commerce and IT consultancy to risk management, document preparation and event
+              organizing. Whatever the task, our focus stays the same: simplify business operations, support growth,
+              manage risks, and create value.
+            </p>
+          </div>
         </Reveal>
         <div className="grid gap-6">
           <Reveal delay={80} className="relative overflow-hidden rounded-3xl bg-ink p-8 text-slate-300">
