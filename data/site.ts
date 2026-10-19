@@ -1,12 +1,11 @@
-// Company details shown across the site.
-// TODO: replace every placeholder below with the client's real details.
+// Company details shown across the site. Leave `hours` empty to hide it.
 export const site = {
   name: "Cardoba",
   tagline: "Professional services for businesses, investors and individuals",
-  email: "info@example.com", // PLACEHOLDER
-  phone: "+000 0000 0000", // PLACEHOLDER
-  address: "Office address, City, Country", // PLACEHOLDER
-  hours: "Sunday – Thursday, 9:00 AM – 6:00 PM", // PLACEHOLDER
+  email: "cardobauae@gmail.com",
+  phone: "+971 56 596 2145",
+  address: "Sharjah, UAE",
+  hours: "", // TODO: add working hours when known
 };
 
 export const navLinks = [
