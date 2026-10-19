@@ -8,12 +8,15 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = { title: "Contact Us" };
 
-const details: { icon: AnyIcon; label: string; value: string; href?: string }[] = [
+const allDetails: { icon: AnyIcon; label: string; value: string; href?: string }[] = [
   { icon: "mail", label: "Email", value: site.email, href: `mailto:${site.email}` },
   { icon: "phone", label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
   { icon: "pin", label: "Office", value: site.address },
   { icon: "clock", label: "Working hours", value: site.hours },
 ];
+
+// Hide any detail left empty in data/site.ts (e.g. hours).
+const details = allDetails.filter((d) => d.value);
 
 export default function ContactPage() {
   return (
