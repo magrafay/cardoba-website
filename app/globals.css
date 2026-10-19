@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-950: #061428;
-  --color-navy-900: #0b1f3a;
-  --color-navy-800: #132d52;
-  --color-navy-700: #1d3d6b;
-  --color-gold-500: #c9a227;
-  --color-gold-400: #d9b84a;
-  --color-gold-100: #f6eed3;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0f172a;
+  --color-canvas: #f7f8fc;
+  --color-brand-50: #eef1ff;
+  --color-brand-100: #dfe5ff;
+  --color-brand-500: #4f6bff;
+  --color-brand-600: #3f57e6;
+  --color-violet-glow: #8a5cff;
+  --color-gold-500: #e0a526;
+  --color-gold-300: #f5c86a;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -16,5 +18,45 @@ html {
 }
 
 body {
-  @apply bg-white text-slate-700 antialiased;
+  @apply bg-canvas text-slate-600 antialiased;
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(90deg, #4f6bff 0%, #8a5cff 50%, #e0a526 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  @apply border border-white/70 bg-white/60 backdrop-blur-xl;
+}
+
+/* Soft colour glows behind heroes */
+@utility glow {
+  @apply pointer-events-none absolute rounded-full blur-[120px];
+}
+
+/* Scroll reveal: hidden only when JS is running, so content is always visible without it */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

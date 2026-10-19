@@ -1,26 +1,27 @@
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 export default function CTA({
-  title = "Ready to simplify your operations?",
-  text = "Tell us what you need and our team will get back to you with a tailored solution.",
+  title = "Let's build something that lasts.",
+  text = "Tell us what you need. We'll reply with a tailored plan, no obligation.",
 }: {
   title?: string;
   text?: string;
 }) {
   return (
-    <section className="bg-gold-100">
-      <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-navy-900 sm:text-3xl">{title}</h2>
-          <p className="mt-2 max-w-xl text-slate-700">{text}</p>
-        </div>
+    <section className="px-4 pb-24 sm:px-6">
+      <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-ink px-8 py-16 text-center md:px-16 md:py-20">
+        <div className="absolute -left-10 -top-10 h-72 w-72 rounded-full bg-brand-500 opacity-40 blur-3xl" />
+        <div className="absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-gold-500 opacity-30 blur-3xl" />
+        <h2 className="relative text-3xl font-bold tracking-[-0.02em] text-white md:text-5xl">{title}</h2>
+        <p className="relative mx-auto mt-4 max-w-xl text-slate-300">{text}</p>
         <Link
           href="/contact/"
-          className="shrink-0 rounded-md bg-navy-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-navy-700"
+          className="relative mt-8 inline-block rounded-full bg-white px-7 py-3.5 font-semibold text-ink transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(255,255,255,0.25)]"
         >
-          Contact Us
+          Get in touch →
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }

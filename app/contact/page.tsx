@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import Icon, { type AnyIcon } from "@/components/Icon";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = { title: "Contact Us" };
@@ -18,35 +19,37 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact Us"
-        title="Let's talk about your needs"
+        title="Let's talk about"
+        highlight="your needs."
         text="Send us a message and our team will get back to you to discuss how we can help."
       />
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.4fr]">
-        <div>
-          <h2 className="text-2xl font-bold text-navy-900">Get in touch</h2>
-          <ul className="mt-8 space-y-6">
-            {details.map((d) => (
-              <li key={d.label} className="flex gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy-900 text-gold-400">
-                  <Icon name={d.icon} />
+      <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-24 sm:px-6 lg:grid-cols-[1fr_1.5fr]">
+        <div className="grid content-start gap-4">
+          {details.map((d, i) => (
+            <Reveal key={d.label} delay={i * 70}>
+              <div className="glass flex items-center gap-4 rounded-3xl p-5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-violet-glow text-white">
+                  <Icon name={d.icon} className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="text-sm font-semibold text-navy-900">{d.label}</p>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{d.label}</p>
                   {d.href ? (
-                    <a href={d.href} className="text-slate-600 hover:text-gold-500">
+                    <a href={d.href} className="font-medium text-ink transition-colors hover:text-brand-500">
                       {d.value}
                     </a>
                   ) : (
-                    <p className="text-slate-600">{d.value}</p>
+                    <p className="font-medium text-ink">{d.value}</p>
                   )}
                 </div>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
-        <ContactForm />
+        <Reveal delay={120}>
+          <ContactForm />
+        </Reveal>
       </section>
     </>
   );

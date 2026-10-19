@@ -4,22 +4,24 @@ import { services } from "@/data/services";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-950 text-slate-300">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
-        <div className="md:col-span-1">
-          <div className="flex items-center gap-2">
-            <img src="/logo.svg" alt="" className="h-8 w-8" />
-            <span className="text-lg font-bold text-white">{site.name}</span>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-slate-400">{site.tagline}.</p>
+    <footer className="border-t border-slate-200/80 bg-white">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.4fr_1fr_1.4fr_1.2fr]">
+        <div>
+          <Link href="/" className="flex items-center gap-2">
+            <img src="/logo.svg" alt="" className="h-7 w-7" />
+            <span className="text-lg font-bold tracking-tight text-ink">
+              cardoba<span className="text-brand-500">.</span>
+            </span>
+          </Link>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed">{site.tagline}.</p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-gold-400">Company</h3>
-          <ul className="mt-4 space-y-2 text-sm">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-ink">Company</h3>
+          <ul className="mt-4 space-y-3 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-white">
+                <Link href={link.href} className="transition-colors hover:text-brand-500">
                   {link.label}
                 </Link>
               </li>
@@ -28,28 +30,33 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-gold-400">Services</h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            {services.slice(0, 6).map((s) => (
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-ink">Services</h3>
+          <ul className="mt-4 space-y-3 text-sm">
+            {services.slice(0, 5).map((s) => (
               <li key={s.slug}>
-                <Link href={`/services/#${s.slug}`} className="hover:text-white">
+                <Link href={`/services/#${s.slug}`} className="transition-colors hover:text-brand-500">
                   {s.title}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/services/" className="font-medium text-brand-500">
+                View all services →
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-gold-400">Contact</h3>
-          <ul className="mt-4 space-y-2 text-sm">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-ink">Contact</h3>
+          <ul className="mt-4 space-y-3 text-sm">
             <li>
-              <a href={`mailto:${site.email}`} className="hover:text-white">
+              <a href={`mailto:${site.email}`} className="transition-colors hover:text-brand-500">
                 {site.email}
               </a>
             </li>
             <li>
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-white">
+              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="transition-colors hover:text-brand-500">
                 {site.phone}
               </a>
             </li>
@@ -57,7 +64,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
+      <div className="border-t border-slate-200/80">
         <p className="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 sm:px-6">
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
