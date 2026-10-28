@@ -29,4 +29,4 @@ Upload the `out/` folder to any static host (Vercel, Netlify, GitHub Pages, cPan
 
 ## Contact form
 
-The site has no server, so the contact form opens the visitor's email app with the message filled in and addressed to the email in `data/site.ts`. To receive submissions directly instead, connect a form service such as Formspree or Netlify Forms.
+The form emails each enquiry to the client through [Web3Forms](https://web3forms.com). Set the access key as the environment variable `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (in Vercel, or in `.env.local` when running locally). It is read at build time, so redeploy after changing it. The key is public by design; no password or server is needed.
